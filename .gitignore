@@ -1,0 +1,14 @@
+build/
+dist/
+build_env/
+__pycache__/
+*.specbuild/
+dist/
+build_env/
+__pycache__/
+*.spec
+build/
+dist/
+build_env/
+__pycache__/
+*.spec
