@@ -27,7 +27,7 @@ This application utilizes a **multithreaded design** to ensure a smooth user exp
 ##  Installation
 1. Navigate to the **[Releases](https://github.com/xenxaarn/ytdownloader/releases)** page.
 2. Download the binary matching your OS.
-3. (Linux/macOS) Run `chmod +x ytdownloader` to grant execution permission.
+3. (Linux) Run `chmod +x ytdownloader` to grant execution permission.
 4. Launch the application: `./ytdownloader`
 
 ##  Known Issues
