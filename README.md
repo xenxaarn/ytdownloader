@@ -31,7 +31,7 @@ This application utilizes a **multithreaded design** to ensure a smooth user exp
 4. Launch the application: `./ytdownloader`
 
 ##  Known Issues
-File Extension: Currently, requesting .m4a audio format may result in an .mp4 file being saved. This is a known quirk that will be addressed in a future update.
+You tell me :)
 
 ##  License
 This project is open-source under the **MIT License**.
