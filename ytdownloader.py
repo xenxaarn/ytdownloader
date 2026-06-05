@@ -1,35 +1,25 @@
 import sys
-import subprocess
-import os
-import importlib
-
-# ==========================================
-# 1. RUNTIME DEPENDENCY AUTO-INSTALLER
-# ==========================================
-REQUIRED_PACKAGES = {
-    "customtkinter": "customtkinter",
-    "yt_dlp": "yt-dlp",
-    "imageio-ffmpeg": "imageio-ffmpeg",
-    "plyer": "plyer"
-}
-
-def install_dependencies():
-    for module_name, package_name in REQUIRED_PACKAGES.items():
-        try:
-            importlib.import_module(module_name.replace('-', '_'))
-        except ImportError:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
-
-install_dependencies()
-
 import threading
+import os
 import customtkinter as ctk
-from yt_dlp import YoutubeDL
-import imageio_ffmpeg
-from plyer import notification
+from tkinter import messagebox
+
+# Verify dependencies exist before starting
+try:
+    from yt_dlp import YoutubeDL
+    import imageio_ffmpeg
+    from plyer import notification
+except ImportError as e:
+    print(f"CRITICAL ERROR: Missing dependencies. Please run: pip install -r requirements.txt")
+    print(f"Details: {e}")
+    import tkinter as tk
+    root = tk.Tk()
+    root.withdraw()
+    messagebox.showerror("Missing Dependencies", "Required libraries are missing. Please run: pip install -r requirements.txt")
+    sys.exit(1)
 
 # ==========================================
-# 2. STANDALONE DESKTOP GUI APPLICATION
+# 2.         YTDOWNLOADER GUI 
 # ==========================================
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
@@ -38,8 +28,7 @@ class UltraFriendlyDownloader(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        # FIXED: Geometry now uses a single string with 'x'
-        self.title("Universal Desktop Media Downloader")
+        self.title("ytdownloader")
         self.geometry("580x520")
         self.resizable(False, False)
 
@@ -74,7 +63,7 @@ class UltraFriendlyDownloader(ctk.CTk):
         self.format_label = ctk.CTkLabel(self, text="Choose Format:", font=("Arial", 12, "bold"))
         self.format_label.pack(pady=5)
         
-        self.format_option = ctk.CTkOptionMenu(self, width=250, values=["🎬 MP4 (Standard Video)", "🍿 MKV (HD Video)", "🎵 MP3 (Audio Only)", "🎧 M4A (High Quality Audio)"])
+        self.format_option = ctk.CTkOptionMenu(self, width=250, values=["MP4 (Standard Video)", "MKV (HD Video)", "MP3 (Audio Only)", "M4A (High Quality Audio)"])
         self.format_option.pack(pady=5)
 
         self.status_label = ctk.CTkLabel(self, text="System ready.", font=("Arial", 12), text_color="#a3a3a3")
