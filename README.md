@@ -34,8 +34,10 @@ Install the required dependencies using:
 ### From Source
 1. Clone the repository.
 2. Create and activate a virtual environment: `python -m venv venv`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the application: `python ytdownloader.py`
+3. For windows: `.\venv\Scripts\activate`
+4. For Linux/macOS: `source venv/bin/activate`
+5. Install dependencies: `pip install -r requirements.txt`
+6. Run the application: `python ytdownloader.py`
 
 ## Known Issues
 Please report any bugs.
